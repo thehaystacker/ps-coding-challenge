@@ -1,0 +1,64 @@
+@import '../../scss/variables';
+
+.wraplist {
+  display: flex;
+}
+
+.title {
+  margin-bottom: 10px;
+  padding: 5px 0;
+  font-size: 14px;
+  text-align: center;
+  border-bottom: 1px solid $dark-grey;
+}
+
+.gridfilter {
+  flex: 0 0 200px;
+  margin-right: 10px;
+}
+
+.badgelist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.badge {
+  flex: 0 0 50%;
+  max-width: 40%;
+  text-align: center;
+}
+
+.wrapcards {
+  display: flex;
+  flex-wrap: wrap;
+
+  .pscard {
+    flex: 0 0 25%;
+    padding: 0 7px;
+    margin-bottom: 15px;
+    display: flex;
+  }
+
+  .card {
+    flex: 1;
+  }
+
+  .meta {
+    margin: 10px 0;
+
+    ul {
+      margin-left: 20px;
+
+      li {
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+.wrapimg {
+  padding: 0 3em;
+  background-color: #eee;
+  margin-bottom: 15px;
+}

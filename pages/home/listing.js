@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Badge from "../../components/badge";
-import styles from "./listing.module.scss";
-// import "./style.scss";
+import styles from "./style.module.scss";
 
 function HomeListing(props) {
   const years = [
@@ -133,7 +132,7 @@ function HomeListing(props) {
                       </h5>
                     </div>
 
-                    {rocket.launch_landing !== null ||
+                    {rocket.launch_landing !== null &&
                     rocket.launch_landing !== undefined ? (
                       <div className={styles.meta}>
                         <h5>

@@ -5,19 +5,15 @@ import { wrapper } from "../store";
 import { fetchLaunches, getLaunchesAction } from "../store/home/actions";
 import { getLaunchesSuccessAction } from "../store/home/actionTypes";
 import HomeListing from "../pages/home/listing";
-
-export const getStaticProps = wrapper.getStaticProps(
-  async ({ store, preview }) => {
-    const response = await fetchLaunches();
-    return { props: { response } };
-  }
-);
+import Link from "next/link";
 
 function Home(props) {
-  const { response } = props;
+  const {
+    props: { response },
+  } = props;
 
   useEffect(() => {
-    props.getLaunchesSuccess(props.response);
+    props.getLaunchesSuccess(response);
   }, []);
 
   return (
@@ -31,6 +27,13 @@ function Home(props) {
     </div>
   );
 }
+
+Home.getInitialProps = async ({ query }) => {
+  console.log(`[query]`, query);
+
+  const response = await fetchLaunches();
+  return { props: { response } };
+};
 
 const mapDispatchToAction = (dispatch) => {
   return {

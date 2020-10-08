@@ -33,7 +33,10 @@ function Home(props) {
       {props.getLaunchesData ? (
         <div className="wrap-cards">
           {props.getLaunchesData.map((rocket) => (
-            <h4 key={rocket.flight_number}>{rocket.mission_name}</h4>
+            <div key={rocket.flight_number}>
+              <h4>{rocket.mission_name}</h4>
+              <img src={rocket.links.mission_patch} alt="mission-patch"/>
+            </div>
           ))}
         </div>
       ) : null}

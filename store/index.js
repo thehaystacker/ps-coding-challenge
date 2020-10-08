@@ -1,11 +1,12 @@
-import homeReducer from "./home";
 import { createStore, combineReducers, applyMiddleware } from "redux";
+import { createWrapper } from "next-redux-wrapper";
 import thunk from "redux-thunk";
+
+import homeReducer from "./home";
 
 const rootReducer = combineReducers({
   home: homeReducer,
 });
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
-
-export default store;
+const makeStore = () => createStore(rootReducer, applyMiddleware(thunk));
+export const wrapper = createWrapper(makeStore);

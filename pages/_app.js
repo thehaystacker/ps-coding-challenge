@@ -1,16 +1,10 @@
 import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
 import "../styles/globals.scss";
-import store from "../store";
+import { wrapper } from "../store";
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
-  );
+  return <Component {...pageProps} />;
 }
 
-const makeStore = () => store;
-
-export default withRedux(makeStore)(MyApp);
+export default wrapper.withRedux(MyApp);

@@ -1,15 +1,25 @@
 import Head from "next/head";
+import { useEffect } from "react";
 import { connect } from "react-redux";
-import { getLaunchesAction } from "../store/home/actions";
+import { wrapper } from "../store";
+import { fetchLaunches, getLaunchesAction } from "../store/home/actions";
+import { getLaunchesSuccessAction } from "../store/home/actionTypes";
+
 import styles from "../styles/Home.module.scss";
 
-export const getStaticProps = async () => {
-  const response = await getLaunchesAction();
-  return { props: { response } };
-};
+export const getStaticProps = wrapper.getStaticProps(
+  async ({ store, preview }) => {
+    const response = await fetchLaunches();
+    return { props: { response } };
+  }
+);
 
 function Home(props) {
   const { response } = props;
+
+  useEffect(() => {
+    props.getLaunchesSuccess(props.response);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -18,19 +28,30 @@ function Home(props) {
         <title>SpaceX Launch Program || Home</title>
       </Head>
 
-      <div className="wrap-cards">
-        {response.map((rocket) => (
-          <h4 key={rocket.flight_number}>{rocket.mission_name}</h4>
-        ))}
-      </div>
+      <button type="button" onClick={props.getLaunches}>Update</button>
+
+      {props.getLaunchesData ? (
+        <div className="wrap-cards">
+          {props.getLaunchesData.map((rocket) => (
+            <h4 key={rocket.flight_number}>{rocket.mission_name}</h4>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
   return {
-    name: state.home.name,
+    getLaunchesData: state.home.getLaunchesData,
   };
 };
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToAction = (dispatch) => {
+  return {
+    getLaunchesSuccess: (data) => dispatch(getLaunchesSuccessAction(data)),
+    getLaunches: () => dispatch(getLaunchesAction()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToAction)(Home);

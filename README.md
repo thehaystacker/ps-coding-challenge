@@ -11,6 +11,11 @@ npm run dev
 # or
 yarn dev
 ```
+## Running the Test cases
+
+```bash
+npm run test
+```
 
 pushing to heroku pipeline:
 

@@ -56,7 +56,7 @@ function Filters(props) {
     <div className={styles.gridfilter}>
       <div className="ps-card">
         <div className={styles.wrapfilters}>
-          <h5 className="title mar-b-05">Filters</h5>
+          <h3 className="title mar-b-05">Filters</h3>
 
           <div className={styles.wrapfilters}>
             <p className={styles.title}>Launch Year</p>

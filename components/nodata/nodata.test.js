@@ -27,6 +27,7 @@ describe("Nodata", () => {
 
   test("should match the snapshot", () => {
     const { asFragment } = render(<Nodata />);
+    
     expect(asFragment()).toMatchSnapshot();
   });
 });

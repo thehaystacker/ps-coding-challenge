@@ -7,7 +7,6 @@ import Loader from "./loader";
 import styles from "./style.module.scss";
 
 function HomeListing(props) {
-
   return (
     <div className="">
       <div className="main-head">
@@ -73,22 +72,21 @@ function HomeListing(props) {
                         <h5>
                           <span>Successful Launch:</span>
                           <span className="txt-blue mar-l-5">
-                            {rocket.launch_success ? "true" : "false"}
+                            {rocket.launch_success ? "Yes" : "No"}
                           </span>
                         </h5>
                       </div>
 
-                      {rocket.launch_landing !== null &&
-                      rocket.launch_landing !== undefined ? (
-                        <div className={styles.meta}>
-                          <h5>
-                            <span>Successful Landing:</span>
-                            <span className="txt-blue mar-l-5">
-                              {rocket.launch_landing ? "true" : "false"}
-                            </span>
-                          </h5>
-                        </div>
-                      ) : null}
+                      <div className={styles.meta}>
+                        <h5>
+                          <span>Successful Landing:</span>
+                          <span className="txt-blue mar-l-5">
+                            {rocket?.rocket?.first_stage.cores[0].land_success
+                              ? "Yes"
+                              : "No"}
+                          </span>
+                        </h5>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -101,7 +99,9 @@ function HomeListing(props) {
       </div>
 
       <div className={styles.devid}>
-        <h4>Developed by: <span className="mar-l-5">Sangeeth</span></h4>
+        <h4>
+          Developed by: <span className="mar-l-5">Sangeeth</span>
+        </h4>
       </div>
     </div>
   );

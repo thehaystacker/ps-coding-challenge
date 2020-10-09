@@ -27,4 +27,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Screenshot of Lighthouse report
 
-![Lighthouse Report Screenshot](./attachments/lighthouse-report.png)
+![Lighthouse Report Screenshot](./public/assets/lighthouse-report.png)

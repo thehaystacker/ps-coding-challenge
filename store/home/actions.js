@@ -1,19 +1,36 @@
-import { getLaunchesSuccessAction } from "./actionTypes";
+import {
+  getLaunchesLoadingAction,
+  getLaunchesSuccessAction,
+} from "./actionTypes";
 
-export const fetchLaunches = async () => {
-  return await fetch(
-    `https://api.spacexdata.com/v3/launches?limit=10`
-  ).then((res) => res.json());
+export const fetchLaunches = async (query = {}) => {
+  let url = new URL(`https://api.spacexdata.com/v3/launches`);
+  url.search = new URLSearchParams({ ...query, limit: 16 });
+  return await fetch(url).then((res) => res.json());
 };
 
-export const getLaunchesAction = () => async (dispatch) => {
-  const response = await fetchLaunches();
+export const getLaunchesAction = () => async (dispatch, getState) => {
+  dispatch(getLaunchesLoadingAction(true));
 
-  dispatch(
-    getLaunchesSuccessAction([
-      { flight_number: 1, mission_name: "Sangeeth" },
-      { flight_number: 2, mission_name: "Sangeeth ks" },
-      { flight_number: 3, mission_name: "Sarath" },
-    ])
-  );
+  const {
+    home: { launch_year, launch_success, land_success, limit },
+  } = getState();
+
+  console.log(`{ launch_year, launch_success, land_success }`, {
+    launch_year,
+    launch_success,
+    land_success,
+    limit,
+  });
+
+  const response = await fetchLaunches({
+    launch_year,
+    launch_success,
+    land_success,
+    limit,
+  });
+
+  dispatch(getLaunchesLoadingAction(false));
+
+  dispatch(getLaunchesSuccessAction(response));
 };

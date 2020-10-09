@@ -12,9 +12,10 @@ function Home(props) {
     props: { response },
   } = props;
 
+  
   useEffect(() => {
     props.getLaunchesSuccess(response);
-  }, []);
+  }, [response]);
 
   return (
     <div className="container">
@@ -29,9 +30,7 @@ function Home(props) {
 }
 
 Home.getInitialProps = async ({ query }) => {
-  console.log(`[query]`, query);
-
-  const response = await fetchLaunches();
+  const response = await fetchLaunches(query);
   return { props: { response } };
 };
 

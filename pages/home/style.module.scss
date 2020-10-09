@@ -12,6 +12,10 @@
   border-bottom: 1px solid $dark-grey;
 }
 
+.gridcards {
+  width: 100%;
+}
+
 .gridfilter {
   flex: 0 0 200px;
   margin-right: 10px;
@@ -61,4 +65,21 @@
   padding: 0 3em;
   background-color: #eee;
   margin-bottom: 15px;
+}
+
+.devid {
+  padding: 2em 0;
+  text-align: center;
+}
+
+.clearfilter {
+  text-align: center;
+  font-size: 11px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 20px;
+  &:hover {
+    opacity: 0.7;
+  }
 }

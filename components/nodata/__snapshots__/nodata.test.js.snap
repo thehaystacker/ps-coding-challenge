@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nodata should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ps-card"
+  >
+    <div
+      class="wrapnodata"
+    >
+      <h4
+        data-testid="message"
+      >
+        Oops! No data found
+      </h4>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,6 +1,6 @@
 ## Hosted @ Heroku
 
-The project is hosted on heroku under the URL [ps-coding-challenge](https://github.com/thehaystacker/ps-coding-challenge) using CI pipeline
+The project is hosted on heroku under the URL [ps-coding-challenge](https://ps-coding-chllenge.herokuapp.com/) using CI pipeline
 
 ## Running the project
 

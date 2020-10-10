@@ -12,7 +12,6 @@ function Home(props) {
     props: { response },
   } = props;
 
-  
   useEffect(() => {
     props.getLaunchesSuccess(response);
   }, [response]);
@@ -22,7 +21,10 @@ function Home(props) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <title>SpaceX Launch Program || Home</title>
-        <meta name="description" content="The home page of SpaceX Launch Program - named ps-coding-challenge"></meta>
+        <meta
+          name="description"
+          content="The home page of SpaceX Launch Program - named ps-coding-challenge"
+        ></meta>
       </Head>
 
       <HomeListing />
